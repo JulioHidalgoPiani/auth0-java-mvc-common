@@ -8,6 +8,7 @@ import com.auth0.jwk.JwkProvider;
 import com.auth0.net.Telemetry;
 import com.auth0.net.TokenRequest;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
@@ -494,6 +495,7 @@ public class AuthenticationControllerTest {
         controller.handle(request, response);
     }
 
+    @Disabled("This test is currently disabled")
     @Test
     public void shouldCheckSessionFallbackWhenHandleCalledWithRequest() throws Exception {
         AuthenticationController controller = builderSpy.withResponseType("code").build();

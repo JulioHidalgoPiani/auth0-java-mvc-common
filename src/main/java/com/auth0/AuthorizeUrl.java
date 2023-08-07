@@ -248,12 +248,12 @@ public class AuthorizeUrl {
 
             TransientCookieStore.storeState(response, state, sameSiteValue, useLegacySameSiteCookie, setSecureCookie, cookiePath);
             TransientCookieStore.storeNonce(response, nonce, sameSiteValue, useLegacySameSiteCookie, setSecureCookie, cookiePath);
+        } else {
+            // Also store in Session just in case developer uses deprecated
+            // AuthenticationController.handle(HttpServletRequest) API
+            RandomStorage.setSessionState(request, state);
+            RandomStorage.setSessionNonce(request, nonce);
         }
-
-        // Also store in Session just in case developer uses deprecated
-        // AuthenticationController.handle(HttpServletRequest) API
-        RandomStorage.setSessionState(request, state);
-        RandomStorage.setSessionNonce(request, nonce);
 
         used = true;
     }
